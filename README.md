@@ -5,9 +5,20 @@ This is a private **Retrieval-Augmented Generation (RAG) application** designed 
 ---
 
 ### Demo Images
+#### Initial Screen  
+The landing interface of the Streamlit-based legal assistant. 
 ![1](https://github.com/user-attachments/assets/ee757bdf-6e6f-44fd-bdf2-4ab2f71cee91)
+
+### Document-Based Answering  
+Ollama uses the `.txt` files you provide to generate answers based on your custom legal documents.  
 ![2](https://github.com/user-attachments/assets/a7d2585c-e810-4ed7-bc63-8f00af37e7b3)
+
+### Context Retrieval Display  
+The app shows the exact retrieved context used by the LLM to formulate its response, ensuring transparency.  
 ![3](https://github.com/user-attachments/assets/4e928da9-a72a-4744-8507-0d7b09b48048)
+
+### Toggle RAG On/Off  
+You can disable retrieval to confirm privacy — when off, the model cannot answer questions based on your data, proving it’s not uploading anything externally.  
 ![4](https://github.com/user-attachments/assets/7a7d5871-6430-4186-a201-fbd0e88e36df)
 
 
