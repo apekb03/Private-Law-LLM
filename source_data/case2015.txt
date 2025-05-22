@@ -1,0 +1,13 @@
+Case: Smith v. Johnson, No. 18-CV-04567 (S.D.N.Y. 2019)
+Summary:
+This case involves a contractual dispute between Plaintiff John Smith and Defendant Sarah Johnson regarding a breach of agreement for the sale of a commercial property located at 123 Main Street, New York, NY.
+Background:
+On June 1, 2017, the parties entered into a binding purchase agreement. Plaintiff alleges that Defendant failed to transfer title to the property after receiving the agreed payment of $500,000, thereby breaching the contract.
+Legal Issues:
+Whether a valid and enforceable contract existed between the parties.
+Whether the Defendant’s failure to transfer title constitutes a breach of contract.
+Whether Plaintiff is entitled to damages, specific performance, or both.
+Argument:
+Plaintiff asserts that the essential elements of contract formation—offer, acceptance, consideration, and mutual intent—were present. Defendant’s refusal to transfer ownership after receiving payment directly violates Section 2-201 of the Uniform Commercial Code and common law principles governing real estate transactions.
+Relief Sought:
+Plaintiff seeks specific performance compelling Defendant to transfer title to the property, or in the alternative, monetary damages in the amount of $500,000 plus interest and costs.
