@@ -1,6 +1,45 @@
 # ⚖️ Private Law LLM with RAG Application (Private Deployment)
 
-This is a private **Retrieval-Augmented Generation (RAG) application** designed to analyze legal documents. It leverages **LLaMA 3.1** via **Ollama**, **ChromaDB** as the vector store, and **Streamlit** for the user interface. The entire stack is **containerized with Docker** and deployed on an **AWS EC2 instance**.
+## 🧾 Project Description
+
+One of the biggest challenges facing businesses today—especially in fields like law, healthcare, and finance—is **data privacy** when using Large Language Models (LLMs). Most commercial LLM solutions pose serious concerns around **data breaches** and **cloud-based data exposure**, making them unsuitable for handling sensitive or client-owned data.
+
+### ⚖️ Problem
+
+Imagine a law firm wanting to access historical case files from as far back as 1980. Traditionally, this involves paralegals manually retrieving and reviewing documents—a process that is time-consuming, error-prone, and expensive.
+
+While LLMs can automate this work, **clients are understandably concerned** about sending confidential data to third-party servers owned by tech giants.
+
+---
+
+### 💡 Our Solution
+
+This RAG-powered legal assistant solves that.
+
+- **Local Deployment**: This bot runs **entirely on your machine or private server**. No data leaves your environment.
+- **Privacy-First**: All document processing and embedding are performed locally. Nothing is uploaded to the cloud.
+- **Retrieval-Augmented Generation (RAG)**: A technique that improves LLM responses by pulling context directly from your provided documents before answering.
+- **Modular Architecture**: Easily updatable document base—new cases or data can be added anytime and ingested without retraining the model.
+
+---
+
+### 🧱 Tech Stack
+
+- **Frontend**: `rag_streamlit_app` — A clean Streamlit interface to interact with your private legal assistant.
+- **Vector Store**: `ChromaDB` — Stores embeddings and enables fast, semantic retrieval.
+- **LLM Backend**: `rag_ollama` — Uses the Ollama runtime to run LLaMA 3.1 locally (offline or online).
+- **Ingestion Pipeline**: `ingest.py` — Preprocesses and chunks your `.txt` legal documents and stores them in ChromaDB.
+
+---
+
+### ✅ Benefits
+
+- No internet? **Ollama runs offline.**
+- Want full control? **You own your data, end-to-end.**
+- Need flexible answers? **Update your files and the model will automatically adapt using RAG.**
+
+This tool combines the power of LLMs with the privacy and control your legal practice demands.
+
 
 ---
 
