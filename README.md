@@ -20,20 +20,21 @@ This is a private Retrieval-Augmented Generation (RAG) application designed to a
 
 ```bash
 chmod 400 your-key.pem
-ssh -i your-key.pem ec2-user@<EC2_PUBLIC_IP>
+ssh -i your-key.pem ec2-user@<EC2_PUBLIC_IP>```
 
-** For Amazon Linux **
-sudo yum update -y
+
+#For Amazon Linux
+```sudo yum update -y
 sudo amazon-linux-extras install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
-newgrp docker
+newgrp docker```
 
-** # Install Docker Compose **
+# Install Docker Compose 
 VERSION=v2.27.0
-sudo curl -L "https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+```sudo curl -L "https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose```
 
 Upload your legal documents (~5GB) to the source_data
 .txt format supported
