@@ -1,0 +1,107 @@
+# Specify the Compose file version (optional but recommended)
+version: '3.8'
+
+services:
+  # Streamlit Application Service
+  streamlit_app:
+    # Build the image from the Dockerfile in the current directory (.)
+    build: .
+    container_name: rag_streamlit_app
+    ports:
+      # Map host port 8501 to container port 8501
+      - "8501:8501"
+    volumes:
+      # Mount the source data directory from the host into the container
+      # Make it read-only (:ro) as the app likely doesn't need to write here
+      - ./source_data:/app/data
+      - ./:/app   ###
+      # Optional: Mount source code for live development (uncomment if needed)
+      # Be aware this overrides the code copied during the build process.
+      # Requires restarting the container to see changes unless Streamlit's autoreload works.
+      # - .:/app
+    environment:
+      # Pass connection details and configurations to the Streamlit app/ingestion script
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - MODEL_NAME=llama3.1:8b-instruct-q4_K_M # Ensure Ollama pulls this model
+      - CHROMA_COLLECTION_NAME=rag_collection # Used by app.py and ingest.py
+    # Ensure ChromaDB and Ollama start before the Streamlit app attempts to connect
+    depends_on:
+      - ollama
+      - chromadb
+    # Restart the container if it stops unexpectedly
+    restart: unless-stopped
+    # Optional: Resource limits (adjust based on your instance)
+    # mem_limit: 4g
+
+  # Ollama Service
+  ollama:
+    # Use the official Ollama image
+    image: ollama/ollama:latest
+    container_name: rag_ollama
+    ports:
+      # Expose Ollama API port
+      - "11434:11434"
+    volumes:
+      # Persist downloaded models to a named volume
+      - ollama_data:/root/.ollama
+    # --- GPU Configuration ---
+    # The 'deploy' key typically works with Docker Swarm.
+    # For standard 'docker-compose up', GPU access relies on the NVIDIA Container Toolkit
+    # being installed on the host and configured as the default Docker runtime,
+    # or specific runtime settings configured elsewhere (e.g., /etc/docker/daemon.json).
+    # This block is commented out as it might not apply directly without Swarm.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1 # or 'all'
+    #           capabilities: [gpu]
+    # -------------------------
+    environment:
+      # Keep models loaded for 5 minutes after last request to improve response time
+      - OLLAMA_KEEP_ALIVE=5m
+      # Optional: Limit concurrent requests or loaded models if RAM/VRAM is tight
+      # - OLLAMA_NUM_PARALLEL=1
+      # - OLLAMA_MAX_LOADED_MODELS=1
+    restart: unless-stopped
+    # Optional: Resource limits (adjust based on your instance)
+    # mem_limit: 16g # Ensure enough RAM for the model
+
+  # ChromaDB Service
+  chromadb:
+    # Use the official ChromaDB image
+    image: chromadb/chroma:latest
+    container_name: rag_chromadb
+    ports:
+      # Expose ChromaDB API port
+      - "8000:8000"
+    volumes:
+      # Persist database data to a named volume
+      - chromadb_data:/chroma/chroma
+    environment:
+      # Allow resetting the database via API (useful for dev, set to false for prod)
+      - ALLOW_RESET=true
+      # Ensure data persistence (this is the default, but explicit)
+      - IS_PERSISTENT=true
+      # Optional: Specify embedding model for Chroma to auto-download if needed by collection
+      # Requires `sentence-transformers` to be installed within the ChromaDB image/environment.
+      # Often better to handle embeddings explicitly during ingestion.
+      # - CHROMA_DEFAULT_EMBEDDING_MODEL=all-MiniLM-L6-v2
+    restart: unless-stopped
+    # Optional: Resource limits (adjust based on your instance and expected index size)
+    # mem_limit: 8g
+
+# Define named volumes for persistent storage
+# These will be managed by Docker
+volumes:
+  ollama_data:
+  chromadb_data:
+
+# Optional: Define a custom network (if needed, otherwise Docker uses a default)
+# networks:
+#   rag_network:
+#     driver: bridge
+

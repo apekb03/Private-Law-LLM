@@ -1,0 +1,13 @@
+# requirements.txt
+
+streamlit
+requests # For Ollama API communication
+chromadb-client >= 0.4.22 # Ensure a recent version for HttpClient stability
+# Langchain for text splitting and potentially other utilities
+langchain >= 0.1.0
+langchain-community # Includes basic document loaders and text splitters
+# Example data loader library (add others based on your data format)
+pypdf # For loading PDF files
+# sentence-transformers # Only needed if generating embeddings client-side in ingest.py
+# tiktoken # Often needed by langchain text splitters
+
