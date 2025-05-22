@@ -84,7 +84,7 @@ scp -i /path/to/your-key-pair.pem -r /path/to/my_local_data/* ec2-user@<your_ec2
 
 
 ### 5. Ingest Data
-Locally from your terminal instance:
+In EC2 instance:
 ```
 cd ~/rag-app
 docker-compose build streamlit_app
