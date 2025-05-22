@@ -4,6 +4,14 @@ This is a private **Retrieval-Augmented Generation (RAG) application** designed 
 
 ---
 
+### Demo Images
+![1](https://github.com/user-attachments/assets/ee757bdf-6e6f-44fd-bdf2-4ab2f71cee91)
+![2](https://github.com/user-attachments/assets/a7d2585c-e810-4ed7-bc63-8f00af37e7b3)
+![3](https://github.com/user-attachments/assets/4e928da9-a72a-4744-8507-0d7b09b48048)
+![4](https://github.com/user-attachments/assets/7a7d5871-6430-4186-a201-fbd0e88e36df)
+
+
+
 ## Quick Start (EC2 Deployment)
 
 ### 1. Launch EC2 Instance
