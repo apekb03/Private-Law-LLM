@@ -1,10 +1,10 @@
-# ⚖️ Private Law LLM with RAG Application (Private Deployment)
+# Private Law LLM with RAG Application (Private Deployment)
 
-## 🧾 Project Description
+## Project Description
 
 One of the biggest challenges facing businesses today—especially in fields like law, healthcare, and finance—is **data privacy** when using Large Language Models (LLMs). Most commercial LLM solutions pose serious concerns around **data breaches** and **cloud-based data exposure**, making them unsuitable for handling sensitive or client-owned data.
 
-### ⚖️ Problem
+### Problem
 
 Imagine a law firm wanting to access historical case files from as far back as 1980. Traditionally, this involves paralegals manually retrieving and reviewing documents—a process that is time-consuming, error-prone, and expensive.
 
@@ -12,7 +12,7 @@ While LLMs can automate this work, **clients are understandably concerned** abou
 
 ---
 
-### 💡 Our Solution
+### Our Solution
 
 This RAG-powered legal assistant solves that.
 
@@ -23,24 +23,13 @@ This RAG-powered legal assistant solves that.
 
 ---
 
-### 🧱 Tech Stack
+### Tech Stack
 
 - **Frontend**: `rag_streamlit_app` — A clean Streamlit interface to interact with your private legal assistant.
 - **Vector Store**: `ChromaDB` — Stores embeddings and enables fast, semantic retrieval.
 - **LLM Backend**: `rag_ollama` — Uses the Ollama runtime to run LLaMA 3.1 locally (offline or online).
 - **Ingestion Pipeline**: `ingest.py` — Preprocesses and chunks your `.txt` legal documents and stores them in ChromaDB.
-
----
-
-### ✅ Benefits
-
-- No internet? **Ollama runs offline.**
-- Want full control? **You own your data, end-to-end.**
-- Need flexible answers? **Update your files and the model will automatically adapt using RAG.**
-
-This tool combines the power of LLMs with the privacy and control your legal practice demands.
-
-
+- 
 ---
 
 ### Demo Images
@@ -142,7 +131,7 @@ docker-compose logs -f
 Ollama will automatically download llama3.1:8b-instruct-q4_K_M on the first run.
 
 ### Possible Errors:
-#You might need to run ingest.py inside the container
+# You might need to run ingest.py inside the container
 ```
 docker exec -it rag_streamlit_app bash
 ```
@@ -154,7 +143,7 @@ then
 ```
 exit
 ```
-#Error Connecting to Ollama on EC2 
+# Error Connecting to Ollama on EC2 
 Need to manually pull ollama model within ollama container
 ```
 docker-compose exec ollama ollama list
