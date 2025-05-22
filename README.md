@@ -50,6 +50,7 @@ http://<EC2_PUBLIC_IP>:8501
 ```
 
 ### Project Structure
+```
 rag-app/
 ├── app.py
 ├── ingest.py
@@ -58,6 +59,7 @@ rag-app/
 ├── requirements.txt
 └── source_data/
 └── documentation/ (optional)
+```
 
 ### Development Notes
 
